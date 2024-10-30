@@ -1,0 +1,25 @@
+name: Display Variable in Console
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  display-variable-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set and display variable
+        run: |
+          echo "My custom variable is my name: $MY_VARIABLE"
+
+        env:
+          MY_VARIABLE: sophia
+
+      - name: Display my secret var
+        run: |
+          echo "My secret variable is my last name: ${{ secrets.MY_SECRET_VAR }}"
